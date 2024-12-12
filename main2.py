@@ -38,7 +38,7 @@ df['time_range'] = df['hour'].apply(hour_to_range)
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Define a list of known locations (cities with polytechnic colleges)
-known_locations = ["Jaipur", "Ajmer", "Jodhpur", "Udaipur", "Kota", "Bikaner"]
+known_locations = ["Ajmer", "Alwar", "Bagidora", "Banswara", "Baran", "Barmer", "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Dholpur", "Dungarpur", "Hanumangarh", "Jaisalmer", "Jalore", "Jaipur", "Jhalawar", "Jhunjhunu", "Jodhpur", "Karauli", "Kelwara", "Kota", "Mandore", "Nagaur", "Neemrana", "Pali", "Pratapgarh", "Rajsamand", "Sawai Madhopur", "Sikar", "Sirohi", "Sanganer", "Sri Ganganagar", "Tonk", "Udaipur"]
 
 # Extract location-based FAQs from user queries
 def extract_location_faqs_from_queries(df, locations):

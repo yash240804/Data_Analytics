@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header Styles */
+h1 {
+    color: #007bff;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Graph Container Styles */
+#peak-times {
+    margin-bottom: 40px;
+}
+
+#graph {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ Section Styles */
+.faq-section {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section h3 {
+    color: #007bff;
+    font-weight: 600;
+}
+
+#location-select {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* FAQ List Styles */
+#faq-list {
+    padding: 0;
+    list-style-type: none;
+}
+
+#faq-list li {
+    background-color: #f1f1f1;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#faq-list li.list-group-item-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-primary {
+    color: #007bff;
+}
+
+.text-secondary {
+    color: #6c757d;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}

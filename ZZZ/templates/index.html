@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Insights Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Chatbot Insights Dashboard</h1>
+
+        <!-- Graphs Section -->
+        <div id="graph" class="mb-4">
+            <h3>Peak Interaction Times</h3>
+            <div id="peak-times"></div>
+            <script>
+                const graphPeak = JSON.parse('{{ graph_peak|tojson|safe }}');
+                Plotly.newPlot('peak-times', graphPeak.data, graphPeak.layout);
+            </script>
+        </div>
+
+        <div id="graph" class="mb-4">
+            <h3>Top FAQs</h3>
+            <div id="faqs-trends"></div>
+            <script>
+                const graphFaqs = JSON.parse('{{ graph_faqs|tojson|safe }}');
+                Plotly.newPlot('faqs-trends', graphFaqs.data, graphFaqs.layout);
+            </script>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h3>Location-Based FAQs</h3>
+            <label for="location-select">Select a Location:</label>
+            <select id="location-select">
+                <option value="">-- Select a Location --</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Ajmer">Ajmer</option>
+                <option value="Jodhpur">Jodhpur</option>
+                <option value="Udaipur">Udaipur</option>
+                <option value="Kota">Kota</option>
+                <option value="Bikaner">Bikaner</option>
+            </select>
+            <ul id="faq-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('location-select').addEventListener('change', function () {
+            const location = this.value;
+            const faqList = document.getElementById('faq-list');
+            faqList.innerHTML = ""; // Clear previous FAQs
+            if (location) {
+                fetch('/get_faqs', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ location })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        data.forEach(faq => {
+                            const li = document.createElement('li');
+                            li.textContent = faq;
+                            faqList.appendChild(li);
+                        });
+                    } else {
+                        faqList.innerHTML = "<li>No FAQs available for this location.</li>";
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
